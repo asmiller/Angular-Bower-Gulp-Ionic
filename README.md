@@ -13,4 +13,4 @@ gulp
 
 ###Features
 
-- Gul
+- Custom gulp minification, Facbook Flo for reloading, ng-templatecache to limit network requests

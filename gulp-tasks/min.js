@@ -13,7 +13,7 @@ module.exports = function (gulp, plugins) {
     gulp.task('minCss', function () {
         gulp.src('build/**/*.css')
             .pipe(cssMin())
-            .pipe(gulp.dest('dist/css'))
+            .pipe(gulp.dest('dist'))
     });
 
     gulp.task('minJs', function () {

@@ -2,10 +2,13 @@ var bowerFiles = require('bower-files')();
 var sass = require('gulp-sass');
 var newer = require('gulp-newer');
 var order = require('gulp-order');
+var htmlMin = require('gulp-htmlMin');
 var concat = require('gulp-concat');
 var templates = require('gulp-templatecache');
 
 module.exports = function (gulp) {
+    var assets = ['src/**/*.*', '!src/js/**', '!src/scss/**', '!src/templates/**'];
+
     gulp.task('vendorJs', function () {
         return gulp.src(bowerFiles.ext('js').files)
             .pipe(order([
@@ -37,6 +40,7 @@ module.exports = function (gulp) {
 
     gulp.task('templates', function () {
         return gulp.src('src/templates/**/*.html')
+            .pipe(htmlMin({collapseWhitespace: true, removeComments: true, preserveLineBreaks: false}))
             .pipe(templates({output: 'templates.js', strip: 'src/', moduleName: 'app'}))
             .pipe(gulp.dest('build'))
     });
@@ -47,7 +51,6 @@ module.exports = function (gulp) {
             .pipe(gulp.dest('build'))
     });
 
-    var assets = ['src/**/*.*', '!src/js/**', '!src/scss/**', '!src/templates/**'];
 
     return ['vendorJs', 'vendorCss', 'js', 'css', 'templates', 'assets'];
 };
