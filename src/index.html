@@ -1,5 +1,10 @@
-<html ng-app="app">
+<!DOCTYPE html>
+<html>
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
     <style>
         .ng-hide {
             display: none !important;
@@ -7,11 +12,24 @@
     </style>
     <link rel="stylesheet" type="text/css" href="css/vendor.css">
     <link rel="stylesheet" type="text/css" href="css/app.css">
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
 </head>
-<body ng-controller="MainCtrl">
-
-<div>{{msg}}</div>
-
+<body ng-app="app">
+<!--
+  The nav bar that will be updated as we navigate between views.
+-->
+<ion-nav-bar class="bar-stable">
+    <ion-nav-back-button>
+    </ion-nav-back-button>
+</ion-nav-bar>
+<!--
+  The views will be rendered in the <ion-nav-view> directive below
+  Templates are in the /templates folder (but you could also
+  have templates inline in this html file if you'd like).
+-->
+<ion-nav-view></ion-nav-view>
 <script type="text/javascript" src="vendor.bundle.js"></script>
 <script type="text/javascript" src="app.bundle.js"></script>
 <script type="text/javascript" src="templates.js"></script>
